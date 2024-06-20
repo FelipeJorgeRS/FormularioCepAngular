@@ -1,0 +1,105 @@
+<!-- src/app/user-form/template.html -->
+<h1>Formulário de Cadastro</h1>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nomeCompleto">Nome Completo:</label>
+    <input type="text" id="nomeCompleto" formControlName="nomeCompleto">
+    <div *ngIf="userForm.get('nomeCompleto')?.invalid && userForm.get('nomeCompleto')?.touched">
+      <span *ngIf="userForm.get('nomeCompleto')?.errors?.required">Nome é obrigatório.</span>
+      <span *ngIf="userForm.get('nomeCompleto')?.errors?.minlength">Nome deve ter no mínimo 3 caracteres.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="dataNascimento">Data de Nascimento:</label>
+    <input type="date" id="dataNascimento" formControlName="dataNascimento">
+    <div *ngIf="userForm.get('dataNascimento')?.invalid && userForm.get('dataNascimento')?.touched">
+      <span *ngIf="userForm.get('dataNascimento')?.errors?.required">Data de nascimento é obrigatória.</span>
+      <span *ngIf="userForm.get('dataNascimento')?.errors?.invalidDate">Data inválida.</span>
+      <span *ngIf="userForm.get('dataNascimento')?.errors?.underage">Você deve ter mais de 18 anos.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" formControlName="cpf">
+    <div *ngIf="userForm.get('cpf')?.invalid && userForm.get('cpf')?.touched">
+      <span *ngIf="userForm.get('cpf')?.errors?.required">CPF é obrigatório.</span>
+      <span *ngIf="userForm.get('cpf')?.errors?.invalidCpf">CPF inválido.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" formControlName="email">
+    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+      <span *ngIf="userForm.get('email')?.errors?.required">E-mail é obrigatório.</span>
+      <span *ngIf="userForm.get('email')?.errors?.email">E-mail inválido.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="telefone">Telefone:</label>
+    <input type="text" id="telefone" formControlName="telefone">
+    <div *ngIf="userForm.get('telefone')?.invalid && userForm.get('telefone')?.touched">
+      <span *ngIf="userForm.get('telefone')?.errors?.required">Telefone é obrigatório.</span>
+      <span *ngIf="userForm.get('telefone')?.errors?.invalidPhone">Telefone inválido.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="cep">CEP:</label>
+    <input type="text" id="cep" formControlName="cep" (blur)="onCepBlur()">
+    <div *ngIf="userForm.get('cep')?.invalid && userForm.get('cep')?.touched">
+      <span *ngIf="userForm.get('cep')?.errors?.required">CEP é obrigatório.</span>
+      <span *ngIf="userForm.get('cep')?.errors?.invalidCep">CEP inválido.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="rua">Rua:</label>
+    <input type="text" id="rua" formControlName="rua">
+    <div *ngIf="userForm.get('rua')?.invalid && userForm.get('rua')?.touched">
+      <span *ngIf="userForm.get('rua')?.errors?.required">Rua é obrigatória.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="numero">Número:</label>
+    <input type="text" id="numero" formControlName="numero">
+    <div *ngIf="userForm.get('numero')?.invalid && userForm.get('numero')?.touched">
+      <span *ngIf="userForm.get('numero')?.errors?.required">Número é obrigatório.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="complemento">Complemento:</label>
+    <input type="text" id="complemento" formControlName="complemento">
+  </div>
+
+  <div>
+    <label for="bairro">Bairro:</label>
+    <input type="text" id="bairro" formControlName="bairro">
+    <div *ngIf="userForm.get('bairro')?.invalid && userForm.get('bairro')?.touched">
+      <span *ngIf="userForm.get('bairro')?.errors?.required">Bairro é obrigatório.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="cidade">Cidade:</label>
+    <input type="text" id="cidade" formControlName="cidade">
+    <div *ngIf="userForm.get('cidade')?.invalid && userForm.get('cidade')?.touched">
+      <span *ngIf="userForm.get('cidade')?.errors?.required">Cidade é obrigatória.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="estado">Estado:</label>
+    <input type="text" id="estado" formControlName="estado">
+    <div *ngIf="userForm.get('estado')?.invalid && userForm.get('estado')?.touched">
+      <span *ngIf="userForm.get('estado')?.errors?.required">Estado é obrigatório.</span>
+    </div>
+  </div>
+
+  <button type="submit">Enviar</button>
+</form>
